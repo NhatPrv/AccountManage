@@ -2,8 +2,6 @@ package source;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class connect {
     public static void main(String[] args) {
@@ -13,14 +11,7 @@ public class connect {
             String username = "sa";
             String password = "123456789";
             Connection connection = DriverManager.getConnection(url,username,password);
-            System.out.println("Kết nối thành công");
-
-            String sql = "select * from ACCOUNT";
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                System.out.print("username:  " + rs.getString(1));
-            }
+            new LogForm();
             new Login(connection);
         } catch (Exception e) {
             System.out.println("Kết nối thất bại");
